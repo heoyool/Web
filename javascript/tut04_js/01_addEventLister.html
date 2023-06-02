@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- onclick은 fucktion내용이 적을 때 addEventLister 쓰면 내용 복잡할때 -->
+    <!-- <button on click =" 함수명()" 이 있어야하는데 addEventLister은 없어도 됨.> -->
+
+    <!-- 1 -->
+    <!-- <button>Click Me</button> -->
+    <!-- 2 -->
+    <!-- <button class = "button">Click Me</button> -->
+    <!-- 3 -->
+    <button class ="button" id ="button">Click Me</button>
+    <script>
+        //click Event 처리 : 함수 분리, function함수, 화살표함수
+        //동작 + 클릭이벤트
+
+        //동작 : 이걸 누르면 글자를 띄우겠음.
+        function chkButton(e) { //e는 걍 외우셈
+            e.preventDefault(); //버튼이 갖고 있는 기본속성 제거
+           alert('진짜 레알 할거냐?');
+        //    누르면 네이버로 이동하게 해줌
+           location.href = "http://www.naver.com";
+        }
+        // 버튼을 찾아서 쿼리연결해도
+        // 위에 1쓸때
+        // let btn = document.querySelector("button");
+        // 위에 2쓸때
+        // let btn = document.querySelector(".button");
+        // 위에 3쓸때
+        let btn = document.querySelector("#button");
+        // 메소드 추가해줘
+        // btn.addEventListener('이벤트 종류(= 클릭할거냐, 더블클릭, 마우스 올리면 할거냐), 함수이름');
+        // 이벤트 종류 : click 선택할거임.
+        btn.addEventListener('click', chkButton);
+        </script>
+</body>
+</html>

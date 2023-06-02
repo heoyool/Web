@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //객체 : let 이름 = {}
+        //배열 : let 이름 = [ {객체1}, {객체2}]
+        
+
+        let member = {
+            id: 1,
+            userid: 'koreait',
+            passwd :'1234'
+        };
+        console.log("=========객체각각출력==========");
+        // 출력방법 1
+        console.log(member.id)
+        // 출력방법 2
+        console.log(member["userid"])
+        console.log("")
+
+        console.log("=========객체반복문 출력===========");
+        // 1.for in사용(중괄호만있을 때 - 객체출력시)
+        // 2.for each는 대괄호만 있을 때
+        //      for(별명 in 객체명 )
+        //      console.log(객체명[별명]);
+
+        // for(m in memeber) {
+        //     console.log(member[m]);
+        // }
+
+        for(key in member) {
+            console.log(member[key]);
+            console.log(`${key} - ${member[key]}`);
+        }
+
+        //배열 : let 이름 = [ {객체1}, {객체2}]
+        let members = [
+            {
+                id:1,
+                userid :'BUSAN',
+                passwd : '0000'
+            },
+
+            {
+                id:2,
+                userid :'ULSAN',
+                passwd : '0000'
+            },
+        
+            {
+                id:3,
+                userid :'DAEGU',
+                passwd : '0000'
+            },    
+    ];
+
+    console.log("=========객체===========")
+    // 자바 스크립트 객체
+    console.log(members)
+
+    // 자바스크립트 쓸때 Json으로 바꾸는 방식
+    // 자바스크립트 > Json(통신)
+    //송신 : Json.stringify(배열명) > 인터넷 통신 > 수신 : Json.parse(배열명)
+    // 키에 "" 있으면 Json임. 업으면 자바스크립트
+    console.log(JSON.stringify(members))
+
+    //배열명.forEach((별명) => {출력코드}) 사용. 
+    //cf:) 객체는 foreach라고 씀
+    // 화살표함수는 무조건 뒤에 {} 붙이기.한줄짜리라도 {}붙이기
+    //el은 저거 위에 하나하나씩을 말함(id, userid, passwd) 
+
+    console.log("=========배열 방법 1===========")
+    members.forEach((el)=>{
+        console.log(el);
+    });
+
+    console.log("")
+
+    console.log("=========배열 방법 2===========")
+    members.forEach((val, key)=>{
+        console.log(`$(key)는 $(val.userid)`);
+    });
+
+    </script>
+</body>
+</html>

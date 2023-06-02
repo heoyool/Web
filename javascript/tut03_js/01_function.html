@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function() 구현해서 출력하는 방법
+        // 1. 기본형
+        // 1~10까지 합계 출력
+
+        // - 동작+출력 분리시키지 않고 만들기
+        // function sum() {
+        //     let total = 0;
+        //     for(let i=0; i<11; i++) {
+        //         total += i
+        //     }
+        //     console.log(total);
+        // }
+
+        // sum();
+
+        // - 동작분리시키기(return사용)
+        // function sum (num1,num2,num3) {
+        //     return num1+num2+num3;
+        // }
+
+        // console.log(sum(100, 200, 300));
+        
+        
+        //  2. function함수 결과를 변수로 받기
+        //(1)기본 변수로 받기
+        // let add = function sum(num1, num2, num3) {
+        //     return num1+num2+num3;
+        // }
+        // console.log(add(100, 200, 300));
+        
+        //(2)생략가능한 부분이 있음.
+        // let sum = function (num1, num2, num3) {
+        //     return num1 + num2 + num3;
+        // }
+        // console.log(sum(10,20,30));
+
+        //3. 화살표 함수 결과를 변수로 받기
+        //function 을 =>로 바꾸고 뒤로 넘김
+        // let sum = (num1, num2, num3) => {
+        //     return (num1 + num2) / num3;
+        // }
+        // console.log(sum(10,20,30));
+
+        //(1)한줄로 만들기 : 한줄이면 중괄호,return 없애도 됨.
+        // let sum = (num1, num2, num3) => (num1 + num2) / num3;
+        // console.log(sum(10,20,30));
+
+        //(2) helloworld : 동작+ 출력
+        // let disp = () => console.log("hello world");
+        // disp()
+
+        // //(3) 다른방법
+        // let view = () => "hello world";
+        // console.log(view());
+
+        //(4) 다른방법
+        //변수는  username 
+        // let view = (username) =>
+        // console.log(`${username}님 안녕하세유`);
+        // view('heo');
+        
+        //(5) 3-(1)~(5)재정리
+
+        // 이것을 말야 그 밑에 있는걸로
+        // function welcome(name) {
+        //     console.log(`${name}님 안녕하세유`);
+        //     console.log("Login완료 ")
+        // }
+        // welcome('heo');
+
+        // 이렇게 바꿀 수 있음.
+        // let welcome = function(name) {
+        //     console.log(`${name}님 안녕하세유`);
+        //     console.log("Login완료 ")
+        // }
+        // welcome("부산");
+
+        //로긴 됬습니다. 출력
+        let isLogin =
+        () => console.log("login됬슴.");
+        isLogin();
+
+    </script>
+</body>
+</html>

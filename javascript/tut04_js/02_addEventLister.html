@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn1">Click me1</button><br/>
+    <button class="btn2">Click me2</button><br/>
+    <button id="btn3" >Click me3</button>
+    
+    <script>
+        //내부함수방식 = 이름이 없음.
+        // 버튼 1번
+        // 위에 버튼 1번과 연결하기
+        let btn1 = document.querySelector('.btn1');
+        // btn1에 이벤트 걸거임.(이벤트 종류, 함수(내부선언할때는 이름을 안씀)
+        btn1.addEventListener('click',  function() {
+            alert("Button1이 클릭되었습니다.");
+        });
+    
+        // 버튼 2번
+        let btn2 = document.querySelector('.btn2');
+        btn2.addEventListener('click', () => {
+            alert("Button2가 클릭되었습니다.");
+        });
+
+        // 버튼 3-1
+        // let btn3 = document.querySelector('#btn3');
+        // btn3.addEventListener('click', function () {
+            // alert("button3이 클릭되었습니다.");
+        // })
+
+        // 버튼 3-2
+        // btn3.addEventListener('click', () => {
+            // alert("button3이 클릭되었습니다.");
+        // } )
+
+        // 버튼 3-3
+        // let btn3 = document.querySelector('#btn3');
+        // function check() {
+        //     alert("버튼3이 클릭되었습니다.");
+        // }
+
+        // 버늩 3-4
+        btn3.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("버튼3이 클릭되었습니다.");
+        });
+
+
+        //내부 화살표 함수방식
+    </script>
+</body>
+</html>
