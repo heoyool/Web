@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajax Test : html에서 자료 요청시 스프링에서 select하여 html로 보내줌</title>
+</head>
+<body>
+<select name = "buseoName" id ="sel" class="" >
+  <!--aJAX처리시 요두줄만 사용할것임. 원래는 전체를 다 바꾸는 데 Ajex는 부분만 db 넣은 것으로 바꿀 수 있다고 함. -->
+<!--  <option value="100">인사과</option>-->
+<!--  <option value="900">임원실</option>-->
+</select>
+</body>
+</html>
+<script>
+  <!--변수선언. 이객체를 xhr로 사용할게요. 준비되었습니다.-->
+    let xhr = new XMLHttpRequest();
+
+  <!--설정할게요. 앞에 get이면 get post쓰면 post. (post or get 방식설정, 주소, 비동기화방식 설정할테니까. = 소켓을 열테니까)-->
+    xhr.open('post', 'http://localhost:8787/getBuseoAjax', true);
+
+  <!--윗주소 입력할테니 자료 보내줘라. 전송해주세요 -->
+    xhr.send()
+
+  <!--  onload :html하면 아래를 사용한다는 뜻 . html로 확인해야함-->
+    xhr.onload = function() {
+
+  <!--ajax가 정상적 수신상태가 되면(자료 주고받을 준비가 되면(4) 문제없이 연결됬다면(200))-->
+      if(xhr.readyState === 4 && xhr.status == 200) {
+  <!--      JSON언어 > js로 바꿔 받을 테니-->
+  <!--    콘솔에 아래를 출력해주세요.-->
+  <!--          console.log(JSON.parse(xhr.responseText));-->
+
+
+
+    let getBuseoData = JSON.parse(xhr.responseText);
+    let output = "<option>선택하시오</option>";
+    getBuseoData.forEach((el) => {
+        output += `<option value=${el.korBuseoCode}>${el.korBuseoName}</option>`;
+    });
+
+    let sel = document.querySelector("#sel");
+    sel.innerHTML = output;
+
+
+    <!--  <option value="100">인사과</option>-->
+    <!--  <option value="900">임원실</option>-->
+  }
+}
+</script>
