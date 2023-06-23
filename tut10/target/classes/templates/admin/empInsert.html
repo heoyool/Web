@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사원등록 페이지</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="tbl-wrap">
+        <a href="/emp/list">사원목록</a>
+        <!-- <form method="post" enctype="multipart/form-data"첨부파일> -->
+        <form method="post">
+            <label for="">이메일</label>
+            <input type="text" name="empEmail" class="empEmail" required /><br/>
+
+            <label for="">비밀번호</label>
+            <input type="password" name="empPasswd" class="empPasswd" required /><br/> 
+
+            <label for="">이름</label>
+            <input type="text" name="empName" class="empName" required /><br/>
+
+            <input type="button" value="사원가입" onclick="frmDataSend()">
+            <!-- onclick="frmDataSend()" 클릭했을때 다음과같은 함수(메소드)를 실행시켜달라 -->
+        </form>
+    </div>
+    <!-- 위에 값을 넘길때는 : json으로 넘겨야함. -->
+
+    <script>
+        function frmDataSend() {
+            let emailValue = document.querySelector(".empEmail").value;
+            let empPasswdValue = document.querySelector(".empPasswd").value;
+            let empNamedValue = document.querySelector(".empName").value;
+
+            // 에이젝스로 받을땐 json형태로 바꿔줘야함.key(별명) : 값(값) 형태로 바꿔야함.
+            // 위에 잘나오는지 확인하기 위해서 각각 alert를 안써도됨.
+            // let obj = [{}, {}, {}]라고사용하는 방식
+
+            let obj = {
+                // 이름은 empEmail사용 값은 emailValue로 사용할 겁니다.라는 json방식
+                empEmail : emailValue,
+                empPasswd : empPasswdValue,
+                empName : empNamedValue
+            };
+
+            // ajax
+            // 제이쿼리는 $.ajax({}) 여러개일때;
+            $.ajax({
+                type : "post",
+                url : "/emp/insert",
+                // 위에 json언어로 사용하기 위해서 json쓰면 다 자동 변환
+                dataType : "json",
+                data : obj,
+                // 문제가 없으면 결과를 담아주세요.
+                success : function(result) { //Controller에서 return한 값이 넘어옴.
+                    // 전송해주쇼, 이동해주쇼(location) emp/list로
+                    if(result.msg == "success") {
+                        alert("사원이 등록되었습니다.");
+                        location.href = "/emp/list";
+                    }else {
+                        alert("사원등록에 실패하였습니다.");
+                        // 실패하면 화면 초기화해줘.
+                        location.reload();
+                    }
+                },
+
+                // 문제가 있으면
+                error : function(err) {
+                    // 에러뜨게해주쇼
+                    console.log(err);
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

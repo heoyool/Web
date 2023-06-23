@@ -1,0 +1,5 @@
+create table tbl_email(
+email varchar(30)
+);
+
+insert into tbl_email values('mail@naver.com');

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사원등록 페이지</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="tbl-wrap">
+        <a href="/emp/list">사원목록</a>
+        <a href="/emp/insert">사원등록</a>
+        <a href="@{/emp/update/{id}(id=${emp.empId})}">수정</a>
+        <button th:onclick="deleteEmp([[${emp.empId}]])">삭제</button></br>
+        <label for="">[[${emp.empEmail}]]</label>
+        <label for="">[[${emp.empPasswd}]]</label>
+        <label for="">[[${emp.empName}]]</label>
+    </div>
+</body>
+</html>

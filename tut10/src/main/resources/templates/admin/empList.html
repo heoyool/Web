@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사원목록 페이지</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="tbl-wrap">
+        <a href="/emp/insert">사원등록</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이메일</th>
+                    <th>비밀번호</th>
+                    <th>이름</th>
+                    <th>등록일</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 타임리프문법으로 tr돌릴거임. -->
+                <tr th:each="emp : ${emp}">
+                    <!-- dto에서 만든거써야됨 -->
+                    <td>[[${emp.empId}]]</td>
+                    <td>
+                        <a href="@{/emp/view/{id}(id=${emp.empId})}">
+                            <strong>
+                                <u>[[${emp.empEmail}]]</u>
+                            </strong>
+                        </a>
+                    </td>
+                    <td>[[${emp.empPasswd}]]</td>
+                    <td>[[${emp.empName}]]</td>
+                    <td>[[${#temporals.format(emp.empReg, 'yyyy.MM.dd')}]]</td>
+                    <td>
+                        <a th:href="@{/emp/view/{id}(id=${emp.empId})}">보기</a>
+                        <a th:href="@{/emp/update/{id}(id=${emp.empId})}">수정</a>
+                        <!-- <a href="@{/emp/delete/{id}(id=${emp.empId})}">삭제</a> -->
+                        <!-- onclick하면 내것만 삭제해주세요. -->
+                        <button th:onclick="deleteEmp([[${emp.empId}]])">삭제</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function deleteEmp(empId) {
+            if(confirm("삭제하면 복구할 수 없습니다. 삭제하시겠습니까?") ) {
+                $.ajax ({
+                    type : "get",
+                    url : "/emp/delete",
+                    dataType : "json",
+                    data : {empId : empId},
+                    success: function(result) {
+                        if(result.msg == "success") {
+                            alert("사원이 삭제되었습니다.");
+                            location.reload();
+                        }
+                    },
+                    error: function() {
+                        alert("관리자에게 문의하세요");
+                    } 
+                });
+            }else {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
