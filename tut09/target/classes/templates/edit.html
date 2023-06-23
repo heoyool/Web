@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>사원수정</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="/emp/empList">사원목록</a>
+    <h2>사원수정페이지</h2>
+    <form action="/emp/register" method ="post">
+        <label>부서명</label>
+        <select name="dept" class = "dept"></select></br>
+
+        <label>이메일</label>
+        <input value = ${person.email} type="email" name="email" class="email" required></br>
+
+        <label>이름</label>
+        <input type="text" name="username" class="username" required></br>
+        <input type="submit" value="회원수정">
+    </form>
+    <script>
+        $(document).ready(function() {
+                $.ajax({
+                type: "get",
+                url:"/emp/dept",
+                dataType:"json",
+                success:function(data) {
+                    let output = "<option>선택하쇼</option>";
+                    data.forEach((d) => {
+                        output += `<option value=${d.korBuseoCode}>${d.korBuseoName}</option>`;
+                    });
+                    document.querySelector(".dept").innerHTML = output;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

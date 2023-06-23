@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+</head>
+<body>
+<label>부서명</label>
+<select id="dept" class ="dept2" onchange="selChange()"></select><br/>
+
+<label>직책</label>
+<select class="pos2" ></select>
+
+<script>
+  $(document).ready(
+  <!-- 서버에 정보 가지고 올때 -->
+    $.ajax({
+      type: "post",
+      url : "/emp/register",
+      dataType : "json",
+      success : function(data) {
+        let output = "<option>부서를선택하쇼</option>";
+        data.forEach((d) => {
+<!--        확인용-->
+<!--            console.log(d.korBuseoCode)-->
+        output += `<option value=${d.korBuseoCode}>${d.korBuseoName}</option>`;
+        });
+
+        document.querySelector("#dept").innerHTML = output;
+      }
+    })
+  );
+
+  let dept = document.querySelector("#dept");
+  function selChange() {
+  <!--    선택한 목록의 value값 출력하기-->
+    let deptValue = dept.options[dept.selectedIndex].value;
+
+  <!--필요한 정보를 서버로 보냈다가 그 결과를 다시 가져오는 것.-->
+      $.ajax({
+        type : "post",
+        url : "/emp/getPos",
+        dataType : "json",
+      <!-- ajax통해서 서버로 보냄-->
+        data : {selectValue:deptValue},
+        success : function(data) {
+          let output = "<option>직책을선택하쇼</option>";
+          data.forEach((d) => {
+            output += `<option value=${d.korPosCode}>${d.korPosName}</option>`;
+          });
+          document.querySelector(".pos2").innerHTML = output;
+        }
+      });
+    }
+</script>
+</body>
+</html>

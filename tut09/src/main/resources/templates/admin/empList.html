@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>사원목록(관리자)</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+<a href="/emp/register">사원가입</a>
+<table border="1">
+  <thead>
+  <tr>
+    <th>번호</th>
+    <th>부서</th>
+    <th>이메일</th>
+    <th>이름</th>
+    <th>가입일</th>
+    <th>비고</th>
+  </tr>
+  <tbody>
+    [[${employees}]]
+    <div th:if="${employees==null}">
+        <tr>
+            <td colsapn="6"> 등록된 사원이 없습니다.</td>
+        </tr>
+    </div>
+<!--    <div th:unless == ${if조건식}>-->
+    <div th:unless = "${employees == null}"}>
+        <!--  <tr th:each="별명:${값}">-->
+        <tr th:each="person: ${employees}">
+        <td>[[${person.id}]]</td>
+        <td>[[${person.dept}]]</td>
+        <td>[[${person.email}]]</td>
+        <td>[[${person.username}]]</td>
+        <td>[[${#temporals.format(person.regdate, 'yyyy.MM.dd')}]]</td>
+
+            <td>
+                <a th:href="@{/emp/edit/{id}(id=${person.id})}" onclick="deleteMember()">
+                    수정
+                </a>
+            </td>
+            <!-- 쿼리스트링 방식 -->
+    <!--        pathValue/emp/delete/1-->
+    <!--        queryString/emp/delete?id=1-->
+    <!--        {id}번호를 변수처리할것임(id)에 들어가는 값은 ${}에 있음.}-->
+            <a th:href="@{/emp/delete/{id}(id=${person.id})}" onclick="deleteMember()">
+            삭제
+          </a>
+        </td>
+      </tr>
+    </div>
+  </tbody>
+  </thead>
+</table>
+<!--<script>-->
+<!--&lt;!&ndash;삭제할때 이런식으로 스크립트로 이렇게 처리함&ndash;&gt;-->
+<!--&lt;!&ndash;    function deleteMember() {&ndash;&gt;-->
+<!--&lt;!&ndash;        if(confirm("삭제하시겠습니까?")) {&ndash;&gt;-->
+<!--&lt;!&ndash;        location.href = "/emp/delete";&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--</script>-->
+</body>
+</html>
