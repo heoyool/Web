@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사원등록 페이지</title>
+</head>
+<body>
+
+    <a href="/employees/list">사원 목록 보기</a>
+
+<!-- html불러올때는 get, 입력저장할땐 post로 바꾸면됨. -->
+    <form method="post" action="/employees/register" name="frm" onsubmit="return frmCheck()">
+    <!-- name데이터베이스저장. class는 어디쓴다고 ? -->
+    <!-- 부서 -->
+    <label for="">부서</label>
+    <select class="sel" name="dept">
+
+    </select><br/>
+
+    <!-- 이메일 -->
+    <label for="">이메일</label>
+    <input type="text" name="email" class="umail"><br/>
+
+    <!-- 비밀번호 -->
+    <label for="">비밀번호</label>
+    <input type="password" name="passwd" class="upwd"><br />
+
+    <!-- 버튼 -->
+    <input type="submit" value="사원가입" class="btn">
+</form>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        function getDept() {
+                 let sel = document.querySelector(".sel");
+                $.ajax({
+                    type: 'get',
+                    url: '/employees/dept',
+                    dataType: 'json',
+                    success : function(data) {
+
+                    let output = "";
+                    data.forEach((d) => {
+                        output += `<option value=${d.korBuseoCode}>${d.korBuseoName}</option>`;
+                    });
+                    sel.innerHTML = output;
+                 }
+            });
+        }
+
+        $(document).ready(function(){
+            getDept();
+        });
+
+        function frmCheck() {
+            let umail = document.querySelector(".umail");
+            let upwd = document.querySelector(".upwd");
+
+            if(!umail.value) {
+            alert("이메일 주소 입력해주세요");
+            umail.focus();
+            return false;
+            }
+
+            if(!upwd.value) {
+            alert("비밀번호를 입력해주세요");
+            upwd.focus();
+            return false;
+            }
+
+            document.frm.submit();
+        }
+    </script>
+</body>
+</html>

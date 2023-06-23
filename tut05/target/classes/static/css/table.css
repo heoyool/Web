@@ -1,0 +1,91 @@
+@charset 'utf-8';
+
+/* table reset */
+table {
+    width : 100%;
+    border-collapse :collapse;
+}
+
+table thead tr {
+    background-color: #0b5ed7;
+    color : #fff;
+    /* padding이 안먹힘 */
+    height: 45px;
+}
+
+tbody tr {
+    height: 45;
+    text-align: center;
+    border-bottom:1px solid #d7d7d7;
+}
+
+tbody td {
+    padding: 10px 0;
+}
+
+tbody tr td:nth-child(1) {
+    width:5%;
+}
+
+tbody tr td:nth-child(2) {
+    width:25%;
+}
+tbody tr td:nth-child(3) {
+    width:10%;
+}
+
+tbody tr td:nth-child(4) {
+    width:15%;
+}
+
+tbody tr td:nth-child(7) {
+    width:15%;
+}
+
+tbody tr td:nth-child(8) {
+    width:20%;
+}/* table reset */
+table {
+    width : 100%;
+    border-collapse :collapse;
+}
+
+table thead tr {
+    background-color: #0b5ed7;
+    color : #fff;
+    /* padding이 안먹힘 */
+    height: 45px;
+}
+
+tbody tr {
+    height: 45;
+    text-align: center;
+    border-bottom:1px solid #d7d7d7;
+}
+
+tbody td {
+    padding: 10px 0;
+}
+
+tbody tr td:nth-child(1) {
+    width:5%;
+}
+
+tbody tr td:nth-child(2) {
+    width:25%;
+}
+tbody tr td:nth-child(3) {
+    width:10%;
+}
+
+tbody tr td:nth-child(4) {
+    width:15%;
+}
+
+tbody tr td:nth-child(7) {
+    width:15%;
+}
+
+tbody tr td:nth-child(8) {
+    width:20%;
+}

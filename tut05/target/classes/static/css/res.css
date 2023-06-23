@@ -1,0 +1,29 @@
+@charset 'utf-8';
+
+@media screen and (max-width: 1000px) {
+    .top-right .userinfo {
+        display: none;
+    }
+
+    .top-right .menu {
+        display: none;
+
+    }
+    .section-left {
+        display: none;
+    }
+
+    .section-right {
+        /* 오른쪽화면에 꽉차게 */
+        width : 100%;
+        display: 100%;
+    }
+
+    /* 모바일일때 보이기 : block*/
+    .icons {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    }
+}

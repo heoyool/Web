@@ -1,0 +1,25 @@
+@charset 'utf-8';
+
+header {
+    background-color: #000004;
+    max-width: 100%;
+    color : #fff;
+    height: 60px;
+    /* 높이값을 줬기때문에 글자를 정렬 어케함? 줄간격주면됨(세로정렬할때) 단점은 한줄일때만 가능, 여러줄은 flex 쓰셈
+    line-height: 60px;
+    - flex쓸때*/
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.top-left {
+    width: 17%;
+}
+
+
+.top-right {
+    width: 83%;
+    display: flex;
+    justify-content: space-between;
+}

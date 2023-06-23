@@ -1,0 +1,31 @@
+@charset 'utf-8';
+
+section {
+    display: flex;
+    background-color: #f7f7f7;
+}
+
+.section-left {
+    width : 15%;
+    /* 가로넓이 주기 : flex-basis: 15%;  같은말*/
+    margin : 10px;
+    box-shadow: 0 0 2px 0.1rem #d7d7d7;
+    height : calc(100vh - 80px);
+    padding: 10px;
+}
+
+.section-right {
+    width : 85%;
+    /* 가로넓이 주기 : flex-basis: 85%;  같은말*/
+    margin: 10px;
+    box-shadow: 0 0 2px 0.1rem #d7d7d7;
+    padding: 10px;
+}
+
+.menu {
+    align-items: center;
+}
+
+.icons {
+    display: none;
+}

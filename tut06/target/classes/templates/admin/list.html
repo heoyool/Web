@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+<a href="/employees/register">사원 등록 페이지</a>
+<table border="1">
+    <tr>
+        <th>부서</th>
+        <th>이메일</th>
+        <th>비밀번호</th>
+        <th>수정/삭제</th>
+    </tr>
+
+    <!--loof : th:each-->
+<!--<tr th:each="별명 : ${controller} 넘어온 변수명">-->
+    <tr th:each="person : ${emp}">
+        <td>[[${person.dept}]]</td>
+        <td>[[${person.email}]]</td>
+        <td>[[${person.passwd}]]</td>
+        <td>
+            <a th:href="@{/employees/delete/{email}(email=${person.email})}">삭제</a>
+        </td>
+    </tr>
+<!--    loof end-->
+</table>
+</body>
+</html>

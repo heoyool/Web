@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!--타임리프선언문-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[[${adminDto.adminTitle}]]</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/res.css">
+
+    <!-- 아이콘쓸준비됨 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+<header>
+    <div class="top-left"><h3>로고</h3></div>
+    <div class="top-right">
+        <div class="userinfo">로그인정보 : email@email<br>로그아웃</div>
+        <div class="menu">메뉴</div>
+        <div class="icons">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+</header>
+<section>
+    <article class="section-left">왼쪽</article>
+    <article class="section-right">
+        <h2>[[${adminDto.adminHeading}]]</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>email.</th>
+                <th>Name.</th>
+                <th>Grade.</th>
+                <th>Deft.</th>
+                <th>Post.</th>
+                <th>Created.</th>
+                <th>Remarks.</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>#</td>
+                <td>koreait@koreait</td>
+                <td>홍길동</td>
+                <td>대리</td>
+                <td>HRD</td>
+                <td>Team</td>
+                <td>2023.06.13</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </article>
+</section>
+</body>
+</html>
